@@ -13,6 +13,9 @@ installation:
 	- virtualenv env -p python3
 	- . env/bin/activate
 	- pip install flask
+	- pip install Flask-pymongo
+	- pip install dnspython
+	- pip install flask-wtf
 	- dulpiquer config.py.dist en config.py
 	- ajouter les bonnes valeurs dans le config.py
 

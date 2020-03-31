@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="formwrapper">
+    {% if type == 'create' %}
+        <h2 class="title">Create a new feature</h2>
+    {% else %}
+        <h2 class="title">Edit a feature</h2>
+    {% endif %}
+    {% if type == 'create' %}
+        <form method="POST" action="/addfeature">
+    {% else %}
+        <form method="POST" action="/editfeature/{{ id }}">
+    {% endif %}
+    
+        {{ form.csrf_token }}
+        <div class="form-field">
+            {{ form.name.label }} {{ form.name }}
+            {% if form.name.errors %}
+                <ul class="errors">
+                {% for error in form.name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateUs.label }} {{ form.stateUs }}
+            {% if form.stateUs.errors %}
+                <ul class="errors">
+                {% for error in form.stateUs.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateEn.label }} {{ form.stateEn }}
+            {% if form.stateEn.errors %}
+                <ul class="errors">
+                {% for error in form.stateEn.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateDe.label }} {{ form.stateDe }}
+            {% if form.stateDe.errors %}
+                <ul class="errors">
+                {% for error in form.stateDe.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateCl.label }} {{ form.stateCl }}
+            {% if form.stateCl.errors %}
+                <ul class="errors">
+                {% for error in form.stateCl.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateFi.label }} {{ form.stateFi }}
+            {% if form.stateFi.errors %}
+                <ul class="errors">
+                {% for error in form.stateFi.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateIt.label }} {{ form.stateIt }}
+            {% if form.stateIt.errors %}
+                <ul class="errors">
+                {% for error in form.stateIt.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateJp.label }} {{ form.stateJp }}
+            {% if form.stateJp.errors %}
+                <ul class="errors">
+                {% for error in form.stateJp.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateEs.label }} {{ form.stateEs }}
+            {% if form.stateEs.errors %}
+                <ul class="errors">
+                {% for error in form.stateEs.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateRu.label }} {{ form.stateRu }}
+            {% if form.stateRu.errors %}
+                <ul class="errors">
+                {% for error in form.stateRu.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            {{ form.stateFr.label }} {{ form.stateFr }}
+            {% if form.stateFr.errors %}
+                <ul class="errors">
+                {% for error in form.stateFr.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

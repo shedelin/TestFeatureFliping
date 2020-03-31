@@ -1,4 +1,4 @@
-function featureIsOk(featureId, country) {
+function featureIsOk(featureId, country, pubId) {
 	$.ajax({
 		type: "POST",
 		cache: false,
@@ -8,7 +8,7 @@ function featureIsOk(featureId, country) {
 		success: function(data) { 
 			// if pub need to be show we recieve 1
 			if ("1" == data) {
-				$('#pub' + featureId).show();
+				$('#pub' + pubId).show();
 			}
 		},
 		error: function(jqXHR) {
@@ -17,9 +17,9 @@ function featureIsOk(featureId, country) {
 }
 
 $(document).ready(function() {
-	featureIsOk("1", "EN");
-	featureIsOk("2", "FR");
-	featureIsOk("3", "EN");
+	featureIsOk("5e836863bf1593d84896b3b3", "US", "1");
+	featureIsOk("5e836863bf1593d84896b3b3", "EN", "2");
+	featureIsOk("5e836863bf1593d84896b3b3", "FR", "3");
 });
 
 $('#pub1').hide();
