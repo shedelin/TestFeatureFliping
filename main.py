@@ -1,5 +1,4 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, make_response, url_for
-from random import randint
 import json
 
 from document import Database
@@ -17,16 +16,48 @@ db = Md.db
 def home():
 	return  render_template('home.html')
 
+@app.route('/managefeature')
+def manageFeature():
+	features  = db.Features.find()
+
+	return  render_template('manageFeature.html', datas=features)
+
+@app.route('/examplesolo')
+def exampleSolo():
+	return  render_template('exampleSolo.html')
+
+@app.route('/examplemulti')
+def exampleMulti():
+	return  render_template('exampleMulti.html')
+
 @app.route('/featureIsOk', methods=['POST'])
 def featureIsOk():
 	feature_id = request.form['featureId']
-	country    = request.form["country"]
+	country    = request.form['country']
 	
 	feature = Feature(feature_id)
 	states  = feature.getStates()
 	data = ("0", "1")['Activate' == states[country]]
 	
 	resp = make_response(json.dumps(data))
+	resp.status_code = 200
+	resp.headers['Access-Control-Allow-Origin'] = '*'
+	return resp
+
+@app.route('/featuresAreOk', methods=['POST'])
+def featuresAreOk():
+	features = request.get_json()['listFeature']
+	datas = {}
+	for feature in features:
+		obj = features[feature]
+		featureId = obj['id']
+		feature = Feature(featureId)
+		states  = feature.getStates()
+		country = obj['country']
+		state = ("0", "1")['Activate' == states[country]]
+		datas[obj['pubId']] = state
+	
+	resp = make_response(json.dumps(datas))
 	resp.status_code = 200
 	resp.headers['Access-Control-Allow-Origin'] = '*'
 	return resp
@@ -53,7 +84,7 @@ def addfeature():
 
 		flash('New feature successfuly created added.')
 
-		return redirect(url_for('home'))
+		return redirect(url_for('managefeature'))
 
 	return render_template('addEditFeature.html', form=form, type="create")
 
@@ -86,7 +117,7 @@ def editfeature(feature_id):
 
 		flash('feature successfuly edited.')
 
-		return redirect(url_for('home'))
+		return redirect(url_for('managefeature'))
 
 	# pas reussis a faire marcher
 	#form.populate_obj(feature)

@@ -16,16 +16,12 @@
   <div class="container">
     <div class="section-wrapper wrapper">
       <div class="section-header">
-        <div uk-grid>
-          <div class="uk-width-auto@m">
-            <a href="{{ url_for('home') }}">
-              <img style="width: 445px;" src="{{url_for('static', filename='images/logos/github-1.png')}}">
-            </a>
-          </div>
+        <div class="row">
+          <a class="col-md-3" href="{{ url_for('home') }}">
+            <img style="width: 50px;" src="{{url_for('static', filename='images/profil.jpeg')}}">
+          </a>
+          <h1> Test features flipping</h1>
         </div>
-      </div>
-      <div>
-        <d1> Test features flipping</d1>
       </div>
     </div>
     {% with messages = get_flashed_messages() %}

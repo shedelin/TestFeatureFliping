@@ -17,11 +17,13 @@ function featureIsOk(featureId, country, pubId) {
 }
 
 $(document).ready(function() {
-	featureIsOk("5e836863bf1593d84896b3b3", "US", "1");
-	featureIsOk("5e836863bf1593d84896b3b3", "EN", "2");
-	featureIsOk("5e836863bf1593d84896b3b3", "FR", "3");
+	// ajouter ici des pubs si tu veux en tester plus
+	featureIsOk("5e83812bdc4aa21f03d3ee8c", "EN", "1");
+	featureIsOk("5e83815ddc4aa21f03d3ee8d", "FR", "2");
+	featureIsOk("5e8381addc4aa21f03d3ee8e", "US", "3");
 });
 
+// oublie pas de cacher la pub ici
 $('#pub1').hide();
 $('#pub2').hide();
 $('#pub3').hide();
